@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ComplexPayment>
+  <Forms>
+    <Form FileID="PrimitiveValidationPage" index="1" id="Input" />
+    <Form FileID="ComplexSelectionListPage" index="2" id="Select" />
+    <Form FileID="PrimitivePaymentPage" index="3" id="Pay" />
+    <Form FileID="PrimitivePrintPage" index="4" id="Print" />
+    <Form FileID="PrimitiveExitPage" index="5" id="Exit" />
+  </Forms>
+  <PrintedCheckTemplate locale="ka-GE">
+    <![CDATA[<center><b>სს "ოპპა"</b>
+</center><center>აქ გადაიხდით ყველაფერს მარტივად და სწრაფად!
+</center><center><b>სწრაფი გადახდის ქვითარი</b>
+</center><b>ფეიბოქსი:</b> <TERMINAL> <ADDRESS>
+<b>გადახდის დრო:</b> <DATETIME>; <DATE>
+<b>უნიკალური კოდი:</b> <TRANSACTION>
+<b>მიმღები:</b> <PRODUCTNAME> 
+<b>სერვისი: სესხის დაფარვა პირადი ნომრით</b>
+<b>იდენტიფიკატორი:</b> <PHONNUMBER> 
+<b>მიღებული თანხის ოდენობა:</b> <AMOUNT> 
+<b>მომსახურების საკომისიო:</b> <CAMOUNT> 
+<b>ჩარიცხული თანხის ოდენობა:</b> <PAMOUNT> 
+<b>მოსალოდნელი დავალიანება:</b> <EAMOUNT> 
+<b>გადახდა მიმღებთან დაფიქსირდება მყისიერად</b>
+<b>ცხელი ხაზი:</b> (032) 220-3000; 224-4500
+<b>სამუშაო საათები:</b> 24 საათი
+<center>გმადლობთ, რომ სარგებლობთ ფეიბოქსით!
+</center><center>გისურვებთ <WISH>
+
+</center><center> 
+</center>
+]]>
+  </PrintedCheckTemplate>
+
+  <PrintedCheckTemplate locale="ru-RU">
+    <![CDATA[<ru><center><b>ОАО "Оппа"</b>
+</center><center>Здесь вы можете оплатить 
+</center><center>все легко и быстро!
+</center><center><b>Платежный чек</b>
+</center><b>ПейБокс:</b> <TERMINAL> <ADDRESS>
+<b>Время платежа:</b> <DATETIME>; <DATE>
+<b>Уникальный код:</b> <TRANSACTION>
+<b>Услуга: Оплата кредита по личному номеру</b>
+<b>Получатель:</b> <PRODUCTNAME>
+<b>Идентификатор:</b> <PHONNUMBER>
+<b>Принятая сумма:</b> <AMOUNT>
+<b>Комиссионные:</b> <CAMOUNT>
+<b>Зачисленная сумма:</b> <PAMOUNT>
+<b>Ожидаемая задолженность:</b> <EAMOUNT> 
+<b>Оплата будет доставлена получателю моментально</b>
+<b>Горячая линия:</b> (032) 220-3000; 224-4500
+<b>Рабочие часы:</b> 24 Часа
+<center>Спасибо за использование PayBox-а!
+</center><center>Желаем вам <WISH>
+
+</center><center> 
+</center>
+
+</ru>]]>
+  </PrintedCheckTemplate>
+
+  <PrintedCheckTemplate locale="en-US">
+    <![CDATA[<center><b>JSC "Oppa"</b>
+</center><center>Here you can pay everything 
+</center><center>easily and quickly!
+</center><center><b>Payment receipt</b>
+</center><b>Paybox:</b> <TERMINAL> <ADDRESS>
+<b>Time of payment:</b> <DATETIME>; <DATE>
+<b>Unique code:</b> <TRANSACTION>
+<b>Receiver:</b> <PRODUCTNAME>
+<b>Service: Loan payment by personal ID</b>
+<b>Customer ID:</b> <PHONNUMBER>
+<b>Amount inserted:</b> <AMOUNT>
+<b>Commission:</b> <CAMOUNT>
+<b>Amount deposited:</b> <PAMOUNT>
+<b>Expected debt:</b> <EAMOUNT> 
+<b>Receiver gets payment information immediately</b>
+<b>Hotline:</b> (032) 220-3000; 224-4500
+<b>Working hours:</b> 24 Hours
+<center>Thank you for using PayBox!
+</center><center>We wish you a <WISH>
+
+</center><center> 
+</center>
+
+]]>
+  </PrintedCheckTemplate>
+  <Product textId="AutoHub" processingProductId="15187">
+    <InputControlType>numpad</InputControlType>
+    <InputControlLocale>en-US</InputControlLocale>
+    <InputFields>
+      <Field name="customerID" length="11" fieldMask="^[0-9]{11}$" fieldFlags="73" value=""  sortIndex="1" type="FixedNumber" />
+    </InputFields>
+    <OutputFields>
+      <Field name="customerID" hashKey="customerID" sortIndex="1" fieldFlags="4" />
+      <Field name="RowCount" hashKey="RowCount" sortIndex="5" fieldFlags="12" />
+      <Field name="LoanID" hashKey="LoanID" sortIndex="2" fieldFlags="4112" />
+	  <Field name="loan-amount" hashKey="loan-amount" sortIndex="2" fieldFlags="4116" />
+      <Field name="loan-product" hashKey="loan-product" sortIndex="3" fieldFlags="4116" />
+      <Field name="next-payment-date" hashKey="next-payment-date" sortIndex="4" fieldFlags="4112"  />
+      <Field name="next-payment-principal" hashKey="next-payment-principal" sortIndex="5" fieldFlags="4116" />
+      <Field name="debt" hashKey="debt" sortIndex="6" fieldFlags="4112" />
+      <Field name="fullname" hashKey="fullname" sortIndex="7" fieldFlags="4112" />
+	 
+	  <Field name="actualAmount" hashKey="actualAmount" sortIndex="6" fieldFlags="2" />
+	  <Field name="commission" hashKey="commission" sortIndex="7" fieldFlags="1" />
+    </OutputFields>
+    <!-- format string, used to build query to provider -->
+    <ProviderQueryFormatString>1;{0}</ProviderQueryFormatString>
+    <PaymentInvoiceFormatString>2;{0}</PaymentInvoiceFormatString>
+    <PaymentInvoiceFields>
+      <Field name="LoanID" sortIndex="1" />
+    </PaymentInvoiceFields>
+    <!-- a single character, used to separate fields in received data from provider -->
+    <ProviderResponseSeparator>;</ProviderResponseSeparator>
+    <ProviderResponseRecordEndMarker>!</ProviderResponseRecordEndMarker>
+    <ProviderResponseFieldNameFormat>Row{0}</ProviderResponseFieldNameFormat>
+    <RecordsListPageSize>100</RecordsListPageSize>
+    <RecordsListIndexZeroBased>false</RecordsListIndexZeroBased>
+    <!-- a single character, used to separate fields in received data from provider -->
+    <ProviderQueryFields>
+      <Field name="customerID" sortIndex="1" />
+    </ProviderQueryFields>
+    <RecordsListFields>
+      <Field name="LoanID" sortIndex="1" />
+      <Field name="loan-amount" sortIndex="2" />
+      <Field name="loan-product" sortIndex="3" />
+      <Field name="next-payment-date" sortIndex="4" />
+      <Field name="next-payment-principal" sortIndex="5" />
+      <Field name="debt" sortIndex="6" />
+      <Field name="fullname" sortIndex="7"  />
+     
+    </RecordsListFields>
+    <Amount>
+     <Commission>
+        <IsProviderCommission>false</IsProviderCommission>
+        <CommissionStage>
+          <Type>Fixed</Type>
+          <Value>150</Value>
+        </CommissionStage>
+      </Commission>
+      <Minimum>200</Minimum>
+      <Maximum>100000</Maximum>
+      <AmountBase>1</AmountBase>
+      <AcceptedCash>
+        <Cash id="1" />
+        <Cash id="2" />
+        <Cash id="3" />
+        <Cash id="4" />
+        <Cash id="5" />
+        <Cash id="6" />
+        <Cash id="7" />
+        <Cash id="8" />
+        <Cash id="13" />
+        <Cash id="14" />
+        <Cash id="15" />
+      </AcceptedCash>
+    </Amount>
+    <!-- action to take (method's name) after last step of template has been completed -->
+    <OnExitTemplate>NavigateHome</OnExitTemplate>
+    <!-- printer name to use for printing checks -->
+    <PrinterName>FirstPrinter</PrinterName>
+    <!-- list of devices required to function for product to work -->
+    <Devices>
+      <Device>
+        <Name>CashCode</Name>
+      </Device>
+      <Device>
+        <Name>CoinNRI</Name>
+      </Device>
+      <Device>
+        <Name>PrinterStar</Name>
+      </Device>
+    </Devices>
+    <CellWidth>
+      <Width>150</Width>
+    </CellWidth>
+  </Product>
+  <!-- product resources -->
+  <TemplateResources>
+    <ResourceSet cultureInfo="en-US">
+      <Resource name="PageLogoImage" targetProperty="src" targetId="PageLogo" value="Autohub" isExternal="1" />
+      <Resource name="WelcomeLabelText" targetProperty="innerText" targetId="WelcomeLabel" value="" />
+      <Resource name="PersonalIDLabelClass" targetProperty="className" targetId="labelpersonalNumber" value="outputLabel" />
+      <Resource name="PersonalIDValueClass" targetProperty="className" targetId="valuepersonalNumber" value="outputValue" />
+      <Resource name="BirthDateLabelClass" targetProperty="className" targetId="labelbirthDate" value="outputLabel" />
+      <Resource name="BirthDateValueClass" targetProperty="className" targetId="valuebirthDate" value="outputValue" />
+      <Resource name="CLNameLabelClass" targetProperty="className" targetId="labelCLName" value="outputLabel" />
+      <Resource name="CLNameValueClass" targetProperty="className" targetId="valueCLName" value="outputValue" />
+      <Resource name="ValidationFailedText" targetProperty="innerText" targetId="ValidationFailedMessage" value="Number verification failed, Please enter again" />
+      <Resource name="PaymentTextMsg" targetProperty="innerText" targetId="PaymentMessageText" value="Please enter amount" />
+      <Resource name="PersonalIDLabelText" value="the personal number" targetProperty="innerText" targetId="labelcustomerID" />
+      <Resource name="SelectRecordLabelText" targetProperty="innerText" targetId="SelectRecordLabel" value="Select a loan" />
+      <Resource name="PrevPageButtonImage" targetProperty="src" targetId="previousPageButton" value="PreviousPageButtonImage" isExternal="1" />
+      <Resource name="NextPageButtonImage" targetProperty="src" targetId="nextPageButton" value="NextPageButtonImage" isExternal="1" />
+	    
+      <Resource name="LoanIDHeaderText" targetProperty="innerText" targetId="headerLoanID" value="Loan number" />
+      <Resource name="debtHeaderText" targetProperty="innerText" targetId="headerdebt" value="Loan amount" />
+	  <Resource name="fullNameHeaderText" targetProperty="innerText" targetId="headerfullName" value="Customer:" />
+      <Resource name="next-payment-dateHeaderText" targetProperty="innerText" targetId="headernext-payment-date" value="Payment date" />
+	  
+	  <Resource name="LoanIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelLoanID" value="Loan number:" />
+      <Resource name="debtLabelTextOutput" targetProperty="innerText" targetId="outputlabeldebt" value="Loan amount:" />
+	  <Resource name="fullNameLabelTextOutput" targetProperty="innerText" targetId="outputlabelfullName" value="Customer:" />
+	  <Resource name="next-payment-dateLabelTextOutput" targetProperty="innerText" targetId="outputlabelnext-payment-date" value="Payment date:" />
+	 
+      <Resource name="CommissionText" targetProperty="innerText" targetId="commissionText" value="" />
+      <Resource name="TransactionTimespanText" targetProperty="innerText" targetId="transactionTimespan" value="" />
+      <Resource name="WelcomeLabel2Text" targetProperty="innerText" targetId="WelcomeLabel2Line" value="Please_enter_number" isExternal="1" />
+      <Resource name="personalNumberHintImage" targetProperty="src" targetId="hintaccount" value="TBCBanner" isExternal="1" />
+      <Resource name="birthDateHintImage" targetProperty="src" targetId="hintbirthDate" value="TBCBanner" isExternal="1" />
+      <Resource name="PaymentInfoLine6" targetProperty="innerText" targetId="comment6" value="" />
+      <Resource name="PaymentInfoLine6Prefix" targetProperty="innerText" targetId="comment6prefix" value="PaymentNotesLine5Prefix" isExternal="1" />
+      <Resource name="ServiceListEmptyMessage" targetProperty="innerText" targetId="thiselementdoesntexist" value="" />
+      <Resource name="BirthDateHint0" targetProperty="innerText" targetId="hintbirthDate0" value="Day" />
+      <Resource name="BirthDateHint1" targetProperty="innerText" targetId="hintbirthDate1" value="Month" />
+      <Resource name="BirthDateHint2" targetProperty="innerText" targetId="hintbirthDate2" value="Year" />
+      <Resource name="CLNameLabelText" targetProperty="innerText" targetId="outputlabelCLName" value="Customer:" />
+      <Resource name="taxPayerNameLabelTextOutput" targetProperty="innerText" targetId="outputlabeltaxPayerName" value="Customer:" />
+      <Resource name="accountDescLabelText" targetProperty="innerText" targetId="outputlabelaccountDesc" value="Address:" />
+      <Resource name="BirthDateLabelText" value="the date of birth" targetProperty="innerText" targetId="labelbirthDate" />
+      <Resource name="CommentText1" targetProperty="innerText" targetId="comment1" value="" />
+      <Resource name="CommentText1Prefix" targetProperty="innerText" targetId="comment1prefix" value="" />
+      <Resource name="CommentText2" targetProperty="innerText" targetId="comment2" value="PaymentNotesLine2" isExternal="1" />
+      <Resource name="CommentText2Prefix" targetProperty="innerText" targetId="comment2prefix" value="PaymentNotesLine2Prefix" isExternal="1" />
+      <Resource name="CommentText3Span1Text" targetProperty="innerText" targetId="comment3span1" value="MinimumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Span2Text" targetProperty="innerText" targetId="comment3span2" value="MaximumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Prefix" targetProperty="innerText" targetId="comment3prefix" value="PaymentNotesLine3Prefix" isExternal="1" />
+      <Resource name="CommentText4" targetProperty="innerText" targetId="comment4" value="PaymentNotesLine4" isExternal="1" />
+      <Resource name="CommentText4Prefix" targetProperty="innerText" targetId="comment4prefix" value="PaymentNotesLine4Prefix" isExternal="1" />
+      <Resource name="CommentText5" targetProperty="innerText" targetId="comment5" value=""  />
+      <Resource name="CommentText5Prefix" targetProperty="innerText" targetId="comment5prefix" value="" isExternal="1"    />
+      <Resource name="PersonalIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelaccount" value="Personal number:" />
+      <Resource name="BirthDateLabelTextOutput" targetProperty="innerText" targetId="outputlabelbirthDate" value="First name:" />
+      <Resource name="OutputFieldLabelText5" targetProperty="innerText" targetId="outputlabelactualAmount" value="WillBeCreditedText" isExternal="1" />
+      <Resource name="CommissionText2" targetProperty="innerText" targetId="commTextCell2" value="1,5   GEL" />
+      <Resource name="CommissionText3" targetProperty="innerText" targetId="commTextCell3" value="PaymentNotesLine1.1" isExternal="1" />
+      <Resource name="OutputFieldLabelText4" targetProperty="innerText" targetId="outputlabelcommission" value="CommissionValueText" isExternal="1" />
+      <Resource name="debtAmountLabelText" targetProperty="innerText" targetId="paymentlabeldebtAmount" value="Remaining debt:" />
+    </ResourceSet>
+    <ResourceSet cultureInfo="ru-RU">
+      <Resource name="PageLogoImage" targetProperty="src" targetId="PageLogo" value="Autohub" isExternal="1" />
+      <Resource name="WelcomeLabelText" targetProperty="innerText" targetId="WelcomeLabel" value="" />
+      <Resource name="PersonalIDLabelClass" targetProperty="className" targetId="labelpersonalNumber" value="outputLabel" />
+      <Resource name="PersonalIDValueClass" targetProperty="className" targetId="valuepersonalNumber" value="outputValue" />
+      <Resource name="BirthDateLabelClass" targetProperty="className" targetId="labelbirthDate" value="outputLabel" />
+      <Resource name="BirthDateValueClass" targetProperty="className" targetId="valuebirthDate" value="outputValue" />
+      <Resource name="CLNameLabelClass" targetProperty="className" targetId="labelCLName" value="outputLabel" />
+      <Resource name="CLNameValueClass" targetProperty="className" targetId="valueCLName" value="outputValue" />
+      <Resource name="ValidationFailedText" targetProperty="innerText" targetId="ValidationFailedMessage" value="Ошибка проверки номера, пожалуйста введите снова" />
+      <Resource name="PaymentTextMsg" targetProperty="innerText" targetId="PaymentMessageText" value="Пожалуйста, внесите сумму" />
+      <Resource name="SelectRecordLabelText" targetProperty="innerText" targetId="SelectRecordLabel" value="Выберите кредит" />
+      <Resource name="PrevPageButtonImage" targetProperty="src" targetId="previousPageButton" value="PreviousPageButtonImage" isExternal="1" />
+      <Resource name="NextPageButtonImage" targetProperty="src" targetId="nextPageButton" value="NextPageButtonImage" isExternal="1" />
+	  
+	   <Resource name="PersonalIDLabelText" value="личный номер" targetProperty="innerText" targetId="labelcustomerID" />
+
+	  <Resource name="LoanIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelLoanID" value="Номер кредита:" />
+      <Resource name="debtLabelTextOutput" targetProperty="innerText" targetId="outputlabeldebt" value="Сумма кредита:" />
+	  <Resource name="next-payment-dateLabelTextOutput" targetProperty="innerText" targetId="outputlabelnext-payment-date" value="Дата платежа:" />
+	  <Resource name="fullNameLabelTextOutput" targetProperty="innerText" targetId="outputlabelfullName" value="Абонент:" />
+	  
+	   
+	   <Resource name="LoanIDHeaderText" targetProperty="innerText" targetId="headerLoanID" value="Номер кредита:" />
+	  <Resource name="next-payment-dateHeaderText" targetProperty="innerText" targetId="headernext-payment-date" value="Дата платежа:" />
+      <Resource name="fullNameHeaderText" targetProperty="innerText" targetId="headerfullName" value="Абонент:" />
+	   <Resource name="debtHeaderText" targetProperty="innerText" targetId="headerdebt" value="Сумма кредита:" />
+	   
+      <Resource name="CommissionText" targetProperty="innerText" targetId="commissionText" value="" />
+      <Resource name="TransactionTimespanText" targetProperty="innerText" targetId="transactionTimespan" value="" />
+      <Resource name="WelcomeLabel2Text" targetProperty="innerText" targetId="WelcomeLabel2Line" value="Please_enter_number" isExternal="1" />
+      <Resource name="personalNumberHintImage" targetProperty="src" targetId="hintaccount" value="TBCBanner" isExternal="1" />
+      <Resource name="birthDateHintImage" targetProperty="src" targetId="hintbirthDate" value="TBCBanner" isExternal="1" />
+      <Resource name="PaymentInfoLine6" targetProperty="innerText" targetId="comment6" value="" />
+      <Resource name="PaymentInfoLine6Prefix" targetProperty="innerText" targetId="comment6prefix" value="PaymentNotesLine5Prefix" isExternal="1" />
+      <Resource name="ServiceListEmptyMessage" targetProperty="innerText" targetId="thiselementdoesntexist" value="" />
+      <Resource name="BirthDateHint0" targetProperty="innerText" targetId="hintbirthDate0" value="День" />
+      <Resource name="BirthDateHint1" targetProperty="innerText" targetId="hintbirthDate1" value="Месяц" />
+      <Resource name="BirthDateHint2" targetProperty="innerText" targetId="hintbirthDate2" value="Год" />
+      <Resource name="taxPayerNameLabelTextOutput" targetProperty="innerText" targetId="outputlabeltaxPayerName" value="Абонент:" />
+      <Resource name="CLNameLabelText" targetProperty="innerText" targetId="outputlabelCLName" value="Абонент:" />
+      <Resource name="accountDescLabelText" targetProperty="innerText" targetId="outputlabelaccountDesc" value="Адрес:" />
+      <Resource name="BirthDateLabelText" value="дата рождения" targetProperty="innerText" targetId="labelbirthDate" />
+      <Resource name="CommentText1" targetProperty="innerText" targetId="comment1" value="" />
+      <Resource name="CommentText1Prefix" targetProperty="innerText" targetId="comment1prefix" value="" />
+      <Resource name="CommentText2" targetProperty="innerText" targetId="comment2" value="PaymentNotesLine2" isExternal="1" />
+      <Resource name="CommentText2Prefix" targetProperty="innerText" targetId="comment2prefix" value="PaymentNotesLine2Prefix" isExternal="1" />
+      <Resource name="CommentText3Span1Text" targetProperty="innerText" targetId="comment3span1" value="MinimumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Span2Text" targetProperty="innerText" targetId="comment3span2" value="MaximumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Prefix" targetProperty="innerText" targetId="comment3prefix" value="PaymentNotesLine3Prefix" isExternal="1" />
+      <Resource name="CommentText4" targetProperty="innerText" targetId="comment4" value="PaymentNotesLine4" isExternal="1" />
+      <Resource name="CommentText4Prefix" targetProperty="innerText" targetId="comment4prefix" value="PaymentNotesLine4Prefix" isExternal="1" />
+      <Resource name="CommentText5" targetProperty="innerText" targetId="comment5" value=""  />
+      <Resource name="CommentText5Prefix" targetProperty="innerText" targetId="comment5prefix" value="" isExternal="1"   />
+      <Resource name="PersonalIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelaccount" value="Личный номер:" />
+      <Resource name="BirthDateLabelTextOutput" targetProperty="innerText" targetId="outputlabelbirthDate" value="Дата рождения:" />
+      <Resource name="OutputFieldLabelText5" targetProperty="innerText" targetId="outputlabelactualAmount" value="WillBeCreditedText" isExternal="1" />
+     <Resource name="CommissionText2" targetProperty="innerText" targetId="commTextCell2" value="1,5  лари" />
+      <Resource name="CommissionText3" targetProperty="innerText" targetId="commTextCell3" value="PaymentNotesLine1.1" isExternal="1" />
+      <Resource name="OutputFieldLabelText4" targetProperty="innerText" targetId="outputlabelcommission" value="CommissionValueText" isExternal="1" />
+      <Resource name="debtAmountLabelText" targetProperty="innerText" targetId="paymentlabeldebtAmount" value="Задолженность:" />
+    </ResourceSet>
+    <ResourceSet cultureInfo="ka-GE">
+      <Resource name="PageLogoImage" targetProperty="src" targetId="PageLogo" value="Autohub" isExternal="1" />
+      <Resource name="WelcomeLabelText" targetProperty="innerText" targetId="WelcomeLabel" value="" />
+      <Resource name="PersonalIDLabelClass" targetProperty="className" targetId="labelpersonalNumber" value="outputLabel" />
+      <Resource name="PersonalIDValueClass" targetProperty="className" targetId="valuepersonalNumber" value="outputValue" />
+      <Resource name="BirthDateLabelClass" targetProperty="className" targetId="labelbirthDate" value="outputLabel" />
+      <Resource name="BirthDateValueClass" targetProperty="className" targetId="valuebirthDate" value="outputValue" />
+      <Resource name="CLNameLabelClass" targetProperty="className" targetId="labelCLName" value="outputLabel" />
+      <Resource name="CLNameValueClass" targetProperty="className" targetId="valueCLName" value="outputValue" />
+      <Resource name="ValidationFailedText" targetProperty="innerText" targetId="ValidationFailedMessage" value="სამწუხაროთ, ნომრის შემოწმება წარმატებით ვერ დასრულდა. ბოდიშს გიხდით შეფერხებისთვის." />
+      <Resource name="PaymentTextMsg" targetProperty="innerText" targetId="PaymentMessageText" value="შეიტანეთ თანხა" />
+      <Resource name="SelectRecordLabelText" targetProperty="innerText" targetId="SelectRecordLabel" value="აირჩიეთ სესხი" />
+      <Resource name="PrevPageButtonImage" targetProperty="src" targetId="previousPageButton" value="PreviousPageButtonImage" isExternal="1" />
+      <Resource name="NextPageButtonImage" targetProperty="src" targetId="nextPageButton" value="NextPageButtonImage" isExternal="1" />
+	  <Resource name="PersonalIDLabelText" value="პირადი ნომერი" targetProperty="innerText" targetId="labelcustomerID" />
+	  
+      <Resource name="LoanIDHeaderText" targetProperty="innerText" targetId="headerLoanID" value="სესხის ნომერი:" />
+      <Resource name="debtHeaderText" targetProperty="innerText" targetId="headerdebt" value="სესხის თანხა:" />
+      <Resource name="next-payment-dateHeaderText" targetProperty="innerText" targetId="headernext-payment-date" value="გადახდის თარიღი:" />
+	  <Resource name="fullNameHeaderText" targetProperty="innerText" targetId="headerfullName" value="აბონენტი:" />
+
+      <Resource name="LoanIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelLoanID" value="სესხის ნომერი:" />
+      <Resource name="debtLabelTextOutput" targetProperty="innerText" targetId="outputlabeldebt" value="სრული სესხის თანხა:" />
+	  <Resource name="next-payment-dateLabelTextOutput" targetProperty="innerText" targetId="outputlabelnext-payment-date" value="გადახდის თარიღი:" />
+	   <Resource name="fullNameLabelTextOutput" targetProperty="innerText" targetId="outputlabelfullName" value="აბონენტი:" />
+	  
+      <Resource name="PaymentInfoLine6Prefix" targetProperty="innerText" targetId="comment6prefix" value="PaymentNotesLine5Prefix" isExternal="1" />
+      <Resource name="CommissionText" targetProperty="innerText" targetId="commissionText" value="" />
+      <Resource name="TransactionTimespanText" targetProperty="innerText" targetId="transactionTimespan" value="" />
+      <Resource name="WelcomeLabel2Text" targetProperty="innerText" targetId="WelcomeLabel2Line" value="Please_enter_number" isExternal="1" />
+      <Resource name="personalNumberHintImage" targetProperty="src" targetId="hintaccount" value="TBCBanner" isExternal="1" />
+      <Resource name="birthDateHintImage" targetProperty="src" targetId="hintbirthDate" value="TBCBanner" isExternal="1" />
+      <Resource name="PaymentInfoLine6" targetProperty="innerText" targetId="comment6" value="" />
+      <Resource name="ServiceListEmptyMessage" targetProperty="innerText" targetId="thiselementdoesntexist" value="" />
+      <Resource name="CommentText1" targetProperty="innerText" targetId="comment1" value="" />
+      <Resource name="CommentText1Prefix" targetProperty="innerText" targetId="comment1prefix" value="" />
+      <Resource name="CommentText2" targetProperty="innerText" targetId="comment2" value="PaymentNotesLine2" isExternal="1" />
+      <Resource name="CommentText2Prefix" targetProperty="innerText" targetId="comment2prefix" value="PaymentNotesLine2Prefix" isExternal="1" />
+      <Resource name="CommentText3Span1Text" targetProperty="innerText" targetId="comment3span1" value="MinimumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Span2Text" targetProperty="innerText" targetId="comment3span2" value="MaximumAmountInfoText" isExternal="1" />
+      <Resource name="CommentText3Prefix" targetProperty="innerText" targetId="comment3prefix" value="PaymentNotesLine3Prefix" isExternal="1" />
+      <Resource name="CommentText4" targetProperty="innerText" targetId="comment4" value="PaymentNotesLine4" isExternal="1" />
+      <Resource name="CommentText4Prefix" targetProperty="innerText" targetId="comment4prefix" value="PaymentNotesLine4Prefix" isExternal="1" />
+      <Resource name="CommentText5" targetProperty="innerText" targetId="comment5" value="" />
+      <Resource name="CommentText5Prefix" targetProperty="innerText" targetId="comment5prefix" value="" isExternal="1" />
+      <Resource name="PersonalIDLabelTextOutput" targetProperty="innerText" targetId="outputlabelaccount" value="პირადი ნომერი:" />
+      <Resource name="OutputFieldLabelText5" targetProperty="innerText" targetId="outputlabelactualAmount" value="WillBeCreditedText" isExternal="1" />
+      <Resource name="OutputFieldLabelText4" targetProperty="innerText" targetId="outputlabelcommission" value="CommissionValueText" isExternal="1" />
+      <Resource name="Expecte`dDebtLabelText" targetProperty="innerText" targetId="paymentlabeldebtAmount" value="დარჩენილი დავალიანება:" />
+     <Resource name="CommissionText2" targetProperty="innerText" targetId="commTextCell2" value="1,5 ლარი" />
+      <Resource name="CommissionText3" targetProperty="innerText" targetId="commTextCell3" value="PaymentNotesLine1.1" isExternal="1" />
+    
+    </ResourceSet>
+  </TemplateResources>
+</ComplexPayment>
